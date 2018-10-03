@@ -4,6 +4,14 @@ class Profile(models.Model):
     profile_photo = models.ImageField(upload_to = 'home')
     bio = models.TextField(max_length = 144)
 
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):        
+        self.delete()
+
+    def __str__(self):
+        return self.name
 
 class Image(models.Model):
     image = models.ImageField(upload_to = 'home')
@@ -12,7 +20,7 @@ class Image(models.Model):
     # profile = models.ForeignKey(Profile)
     likes = models.CharField(max_length = 25)
     comments = models.TextField(max_length = 144)
-    pub_date = models.DateTimeField(auto_now_add = True)
+    # pub_date = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
         return self.image_name
@@ -24,10 +32,4 @@ class Image(models.Model):
         self.save()
 
     def delete_image(self):
-        self.delete()  
-
-    # @classmethod
-    # def update_caption(cls,update):
-    #     instagram = cls.objects.filter
-    #     (image_caption__name__icontains = update)
-    #     return instagram
+        self.delete()
