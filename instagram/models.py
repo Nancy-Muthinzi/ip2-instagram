@@ -18,8 +18,8 @@ class Image(models.Model):
     image_name = models.CharField(max_length = 50)
     image_caption = models.TextField(max_length = 50)
     # profile = models.ForeignKey(Profile)
-    likes = models.CharField(max_length = 25)
-    comments = models.TextField(max_length = 144)
+    likes = models.CharField(max_length = 25, blank=True)
+    comments = models.TextField(max_length = 144, blank=True)
     # pub_date = models.DateTimeField(auto_now_add = True)
 
     def __str__(self):
@@ -33,3 +33,17 @@ class Image(models.Model):
 
     def delete_image(self):
         self.delete()
+
+    @classmethod
+    def search_by_category(cls,search_term):
+        gallery = cls.objects.filter(image_category__name__icontains=search_term)
+        return images
+    @classmethod
+    def retrive_all_images(cls):
+        images = Image.objects.all()
+        return images
+
+    @classmethod
+    def get_image_by_id(cls, id):
+        images = cls.objects.get(pk=id)
+        return images  
