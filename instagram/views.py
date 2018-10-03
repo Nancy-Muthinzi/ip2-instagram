@@ -7,7 +7,7 @@ def login(request):
     return render(request,'login.html')
 
 def home(request):
-    return render(request,'home.html',{'images':images})
+    return render(request,'home.html')
 
 def search_results(request):
 
