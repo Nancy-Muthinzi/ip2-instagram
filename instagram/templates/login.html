@@ -3,7 +3,22 @@
 {% block content %}
 {{block.super}}
 
-<h1>Instagram</h1>
-<h3>Sign up to see photos and <br>videos from your friends.</h3>
+<div class="container-fluid">
+    <div class="row">
+    <div class="card" style="padding-top: 100px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); transition: 0.3s;">
+        <div class="col-md-2"></div>
+        
+        <div class="col-md-4"></div>
+
+        <div class="col-md-4">
+            <h1 style="font-family: 'Grand Hotel', cursive; text-align: center">Instagram</h1>
+            <h3 style="text-align: center;">Sign up to see photos and <br>videos from your friends.</h3>
+            <button type="button" class="btn btn-primary">Log in with Facebook</button>
+        </div>
+
+        <div class="col-md-2"></div>
+    </div>
+</div>
+</div>
 
 {% endblock %}

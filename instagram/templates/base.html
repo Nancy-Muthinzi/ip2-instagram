@@ -7,6 +7,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- <link href="https://fonts.googleapis.com/css?family=Caveat+Brush" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Grand+Hotel" rel="stylesheet">
+
 
   {% if title %}
   <title> Welcome to - {{title}}</title>
@@ -16,11 +18,13 @@
 
   {% block styles %}
   {% bootstrap_css %}
-  <link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+  <link rel="stylesheet" href="{% static 'css/instagram.css' %}">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Grand+Hotel" rel="stylesheet"> -->
   {% endblock %}
 
 </head>
 <body>
+    <!-- {% include "navbar.html" %} -->
 
     {% block content %} 
 
