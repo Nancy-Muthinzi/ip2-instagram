@@ -14,9 +14,9 @@ class Profile(models.Model):
         return self.name
 
 class Image(models.Model):
-    image = models.ImageField(upload_to = 'home')
+    image = models.ImageField(upload_to = 'home/')
     image_name = models.CharField(max_length = 50)
-    image_caption = models.TextField(max_length = 50)
+    image_caption = models.TextField(max_length = 144)
     # profile = models.ForeignKey(Profile)
     likes = models.CharField(max_length = 25, blank=True)
     comments = models.TextField(max_length = 144, blank=True)
