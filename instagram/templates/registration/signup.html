@@ -14,14 +14,15 @@
         <div class="col-md-3">
             <h1 style="font-family: 'Grand Hotel', cursive; text-align: center"><img src="../static/images/logo.png"
                     width="200px"></h1>
-            <h3 style="text-align: center;">Sign up to see photos and <br>videos from your friends.</h3>
+            <h3 style="text-align: center; font-size: 1.5em; color: grey">Sign up to see photos and <br>videos from
+                your friends.</h3>
             <button type="button" class="btn btn-primary">Log in with Facebook</button>
 
             {% if form.errors %}
-                <p> Some Information Might be Incorrect </p>
+            <p> Some Information Might be Incorrect </p>
             {% endif %}
 
-            <form action="/accounts/register/" method="post">
+            <form action="/accounts/register/" method="post" style="font-size:12px;">
                 {% csrf_token %}
 
                 <div class="form-group">
@@ -46,10 +47,20 @@
 
             <button type="button" class="btn btn-primary">Sign Up</button>
 
-            <p style="text-align: center;">By signing up, you agree to our <br><strong>Terms, Data Policy</strong> and
-                <strong>Cookies <br>Policy</strong>.</p>
+            <p style="text-align: center; color: grey; font-size: 12px;">By signing up, you agree to our <br>Terms,
+                Data Policy and
+                Cookies <br>Policy.</p>
 
-            <p>Have an account?</p>    
+            <p style="text-align:center"> Have an account? <a href=#> Log In </a></p>
+            <p style="text-align:center">Get the app.</p>
+
+            <div class="store" style="text-align:center;">
+                <a href="https://itunes.apple.com/app/instagram/id389801252?mt=8&vt=lo"><img src="../static/images/ios.png"
+                        width="150px" target="_blank"></a> <a href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb%26utm_campaign%3DsignupPage%26ig_mid%3DW6YOogAEAAFWtejCCYLtB7Qih0kq%26utm_content%3Dlo%26utm_medium%3Dbadge"><img
+                        src="../static/images/google.png" width="150px" target="_blank"></a>
+                <br><br><br><br>
+            </div>
+
         </div>
 
         <div class="col-md-4"></div>

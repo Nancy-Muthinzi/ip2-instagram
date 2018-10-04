@@ -6,12 +6,22 @@ from .forms import CommentForm
 
 # Create your views here.
 def signup(request):
+    '''
+    This is the page where a user signs up to the app
+    '''
     return render(request,'registration/signup.html')
 
 def login(request):
+    '''
+    This is where a user logs in after signing up to the app
+    '''
     return render(request,'registration/login.html')
 
+@login_required(login_url='/accounts/register/')
 def home(request):
+    '''
+    This is the current user's profile page
+    '''
     images = Image.objects.all()
     form = CommentForm(request.POST)
     if form.is_valid():

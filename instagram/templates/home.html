@@ -4,29 +4,27 @@
 
 {% include "navbar.html" %}
 
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: lightgrey;">
+
+    <img src={{user.get_profile}}>
+
     <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-7">
         {% for post in images %}
-            <img src="{{post.image.url}}" width="400"><br>
+        <div class="col-sm-4">
+            <img src="{{post.image.url}}" width="350px" height="350px"  style="border: 1px solid #ddd;"><br>
             <p style="width:400px;">{{post.image_caption}}</p>
 
             <form class="comment-form" role="comment">
-                
+
                 {%csrf_token%}
 
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Add a comment" name="comment" style="width:400px;"><br><br>
                 </div>
             </form>
-
+        </div>
         {% endfor %}
-        </div>
 
-        <div class="col-sm-4">
-
-        </div>
     </div>
 
 
