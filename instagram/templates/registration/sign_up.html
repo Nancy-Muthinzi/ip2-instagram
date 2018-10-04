@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load bootstrap3 %}
+{{block.super}}
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-2"></div>
+
+        <div class="col-md-5"></div>
+
+        <div class="col-md-3">
+            <h1 style="font-family: 'Grand Hotel', cursive; text-align: center"><img src="../static/images/logo.png"
+                    width="200px"></h1>
+            <h3 style="text-align: center;">Sign up to see photos and <br>videos from your friends.</h3>
+            <button type="button" class="btn btn-primary">Log in with Facebook</button>
+
+            {% if form.errors %}
+                <p> Some Information Might be Incorrect </p>
+            {% endif %}
+
+            <form action="/accounts/register/" method="post">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="email">Mobile Number or Email</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="email">Full Name</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Username</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+
+            <button type="button" class="btn btn-primary">Sign Up</button>
+
+            <p style="text-align: center;">By signing up, you agree to our <br><strong>Terms, Data Policy</strong> and
+                <strong>Cookies <br>Policy</strong>.</p>
+
+            <p>Have an account?</p>    
+        </div>
+
+        <div class="col-md-4"></div>
+
+    </div>
+</div>
+
+{% endblock %}

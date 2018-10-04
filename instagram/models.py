@@ -18,6 +18,7 @@ class Image(models.Model):
     image_name = models.CharField(max_length = 50)
     image_caption = models.TextField(max_length = 144)
     # profile = models.ForeignKey(Profile)
+    # likes = models.IntergerField(max_length = 25, blank=True)
     likes = models.CharField(max_length = 25, blank=True)
     comments = models.TextField(max_length = 144, blank=True)
     # pub_date = models.DateTimeField(auto_now_add = True)
@@ -47,3 +48,6 @@ class Image(models.Model):
     def get_image_by_id(cls, id):
         images = cls.objects.get(pk=id)
         return images  
+
+class Comment(models.Model):
+    name = models.CharField(max_length = 144)
