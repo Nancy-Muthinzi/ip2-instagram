@@ -2,14 +2,24 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Image
 from django.contrib.auth.decorators import login_required
+from .forms import CommentForm
 
 # Create your views here.
+def signup(request):
+    return render(request,'registration/signup.html')
+
 def login(request):
     return render(request,'registration/login.html')
 
 def home(request):
     images = Image.objects.all()
-    return render(request,'home.html',{'images':images})
+    form = CommentForm(request.POST)
+    if form.is_valid():
+        print('valid')
+    else:
+        form = CommentForm()
+
+    return render(request,'home.html',{'images':images, 'commentForm':form})
 
 def search_results(request):
 
@@ -24,5 +34,3 @@ def search_results(request):
         message = "You haven't made any searches"
         return render(request, 'search.html', {"message":message})    
 
-    # @login_required(login_url='/accounts/login/')
-    # def image(request, image_id)    

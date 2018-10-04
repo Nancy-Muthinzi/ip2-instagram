@@ -50,4 +50,4 @@ class Image(models.Model):
         return images  
 
 class Comment(models.Model):
-    name = models.CharField(max_length = 144)
+    comment = models.CharField(max_length = 144)
