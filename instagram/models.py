@@ -51,3 +51,10 @@ class Image(models.Model):
 
 class Comment(models.Model):
     comment = models.CharField(max_length = 144)
+
+class Users(models.Model):
+    first_name = models.CharField(max_length=25)
+    last_name = models.CharField(max_length=25)
+    username = models.CharField(max_length=25)
+    email = models.EmailField()
+    # password = models.PasswordField()
