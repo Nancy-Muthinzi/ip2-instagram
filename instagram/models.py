@@ -36,9 +36,10 @@ class Image(models.Model):
         self.delete()
 
     @classmethod
-    def search_by_category(cls,search_term):
-        gallery = cls.objects.filter(image_category__name__icontains=search_term)
-        return images
+    def search_by_image_name(cls,search_term):
+        instagram = cls.objects.filter(image_name__icontains=search_term)
+        return instagram
+
     @classmethod
     def retrive_all_images(cls):
         images = Image.objects.all()

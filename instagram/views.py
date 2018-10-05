@@ -3,6 +3,7 @@ from django.http import HttpResponse,Http404,HttpResponseRedirect
 from .models import Image
 from django.contrib.auth.decorators import login_required
 from .forms import CommentForm
+from .email import send_welcome_email
 
 # Create your views here.
 def signup(request):
@@ -23,9 +24,11 @@ def home(request):
     This is the current user's profile page
     '''
     images = Image.objects.all()
-    form = CommentForm(request.POST)
-    if form.is_valid():
-        print('valid')
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        
+        HttpResponseRedirect('home')
+
     else:
         form = CommentForm()
 
@@ -35,7 +38,7 @@ def search_results(request):
 
     if 'image' in request.GET and request.GET["image"]:
         search_term = request.GET.get("image")
-        searched_images = Image.search_by_category(search_term)
+        searched_images = Image.search_by_image_name(search_term)
 
         message = f"{search_term}"
         return render(request, 'search.html', {"message":message, "images": searched_images})
@@ -43,4 +46,3 @@ def search_results(request):
     else:
         message = "You haven't made any searches"
         return render(request, 'search.html', {"message":message})    
-
