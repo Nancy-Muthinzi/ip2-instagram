@@ -11,20 +11,21 @@
     <div class="row">
         {% for post in images %}
         <div class="col-sm-4">
-            <img src="{{post.image.url}}" width="350px" height="350px"  style="border: 1px solid #ddd;"><br>
-            <p style="width:400px;">{{post.image_caption}}</p>
+            <div class="card">
+                <img src="{{post.image.url}}" width="350px" height="350px" style="border: 1px solid #ddd;"><br>
+                <p style="width:400px;">{{post.image_caption}}</p>
 
-            <form class="comment-form" role="comment">
+                <form class="comment-form" role="comment">
 
-                {%csrf_token%}
+                    {%csrf_token%}
 
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Add a comment" name="comment" style="width:400px;"><br><br>
-                </div>
-            </form>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Add a comment" name="comment" style="width:400px;"><br><br>
+                    </div>
+                </form>
+            </div>
         </div>
         {% endfor %}
-
     </div>
 
 
