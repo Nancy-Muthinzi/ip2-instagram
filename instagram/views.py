@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse,Http404,HttpResponseRedirect
+import datetime as dt
 from .models import Image
 from django.contrib.auth.decorators import login_required
 from .forms import CommentForm
@@ -24,12 +25,13 @@ def profile(request):
     '''
     return render(request,'profile.html')    
 
-# @login_required(login_url='/accounts/register/')
+@login_required(login_url='/accounts/register/')
 def home(request):
     '''
     This is the current user's profile page
     '''
     images = Image.objects.all()
+    date = dt.date.today()
     if request.method == 'POST':
         form = CommentForm(request.POST)
         HttpResponseRedirect('home')
@@ -39,10 +41,18 @@ def home(request):
 
     return render(request,'home.html',{'images':images, 'commentForm':form})
 
+@login_required(login_url='/accounts/login/')
 def profile(request):
     profiles =  Profile.objects.all()
 
     return render(request, 'home.html')
+
+@login_required(login_url='/accounts/login/')
+def like(request, image_id):
+	post = get_object_or_404(Image, pk=image_id)
+	request.user.profile.like(post)
+
+	return redirect('welcome')    
 
 def search_results(request):
 

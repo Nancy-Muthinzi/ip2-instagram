@@ -16,11 +16,11 @@ class Profile(models.Model):
 
 class Image(models.Model):
     image = models.ImageField(upload_to = 'home/', blank=True)
-    user = models.CharField(max_length=25, default= True)
+    user = models.CharField(max_length=25, blank= True)
     image_name = models.CharField(max_length = 25, blank=True)
     image_caption = models.TextField(max_length = 144)
     profile = models.TextField(max_length=50, blank=True)
-    likes = models.CharField(max_length = 25, blank=True)
+    image_like = models.IntegerField(default=0)
     comments = models.TextField(max_length = 144, blank=True)
 
     def __str__(self):
