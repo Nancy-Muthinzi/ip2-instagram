@@ -9,48 +9,31 @@
         <div class="col-md-2"></div>
 
         <div class="col-md-6" style="padding-top:20px;">
-            {% for post in images %}
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal{{post.id}}">
-                <img src="{{post.image.url}}" width="350px" height="350px" style="border: 1px solid #ddd;"><br>
-                <p style="width:350px;">{{post.image_caption}}</p>
-            </button>
+            <div class="card">
+                {% for post in images %}
 
-            <form class="comment-form" role="comment">
-
-                {%csrf_token%}
-
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Add a comment" name="comment" style="width:380px; border-radius: 10px;"><br><br>
+                <div class="card-header">
+                    <p> {{post.user}} </p>
                 </div>
-            </form>
-            {% endfor %}
 
-            <!-- image details -->
-            {% for post in images %}
-            <div class="modal fade" id="myModal{{post.id}}" role="dialog">
-                <div class="modal-dialog">
-
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <img src="{{post.image.url }}" alt="" width="500" height="500">
-                            <h4 class="modal-title">{{ post.image_name }}</h4>
-                        </div>
-
-                        <div class="modal-body">
-                            {% for name in image_name %}
-                            <p>Name: {{ image.name }}</p>
-                            <p>Caption: {{ post.image_caption }}</p>
-                            {% endfor %}
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
+                <div class="card-body">
+                    <img src="{{post.image.url}}" width="400px" height="400px" style="border: 1px solid #ddd;"><br>
                 </div>
+
+                <div class="card-title">
+                    <p style="width:350px;">{{post.image_caption}}</p>
+                </div>
+
+                <div class="card-footer">
+                    <form class="comment-form" role="comment">
+                        {%csrf_token%}
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Add a comment" name="comment" style="width:380px; border-radius: 10px;">
+                        </div>
+                    </form><br><br>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-2"></div>
