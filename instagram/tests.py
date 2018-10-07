@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Profile, Image
+from .models import Profile, Image, Tags, Like
 
 class ProfileTestClass(TestCase):
     '''

@@ -20,7 +20,6 @@ class Image(models.Model):
     image_name = models.CharField(max_length = 25, blank=True)
     image_caption = models.TextField(max_length = 144)
     profile = models.TextField(max_length=50, blank=True)
-    image_like = models.IntegerField(default=0)
     comments = models.TextField(max_length = 144, blank=True)
 
     def __str__(self):
@@ -54,9 +53,12 @@ class Comment(models.Model):
     user = models.ForeignKey(User, default=True, on_delete=models.CASCADE)
     comment = models.TextField(max_length = 144)
     image = models.ForeignKey(Image, on_delete=models.CASCADE, default= True)
-
+    
 class Tag(models.Model):
     name = models.CharField(max_length= 50)
+
+    def __str__(self):
+        return self.name
 
 class Like(models.Model):
     user = models.ForeignKey(Profile)    
