@@ -1,22 +1,22 @@
-# PHOTO GALLERY
+# INSTAGRAM
 
-<img src="/gallery/static/images/img.png">
+<!-- <img src="/gallery/static/images/img.png"> -->
 
-This is a personal gallery application that displays my photos for others to see and gives a brief description of each image.
+This is a clone website for the popular photo app Instagram.
 
 #### A user of the application will be able to:
 
-- View different photos that interest me
-- Click on a single photo to expand it and also view the details of the photo
-- Search for different categories of photos
-- Copy a link to the photo to share with friends
-- View photos based on the location they were taken
+- Sign in to the application to start using.
+- Upload my pictures to the application.
+- See my profile with all my pictures.
+- Follow other users and see their pictures on my timeline.
+- Like a picture and leave a comment on it.
 
 ## Setup/Installation Requirements
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. Here's a link to the deployed site on Heroku - https://nanciekathini-gallery.herokuapp.com/
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. Here's a link to the deployed site on Heroku - https://nanciekathini-instagram.herokuapp.com/
 
-- go to my repo on github and clone it - https://github.com/Nancy-Muthinzi/ip1-django.git
+- go to my repo on github and clone it - https://github.com/Nancy-Muthinzi/ip2-instagram.git
 - create a folder on your computer, create and activate a virtual environment
 - download django and install all the necessary requirements to be able to run the app
 - finally do a ./manage.py runserver to be able to run it on your browser
