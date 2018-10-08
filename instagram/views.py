@@ -7,9 +7,6 @@ from .forms import CommentForm
 from .email import send_welcome_email
 
 # Create your views here.
-
-
-
 def login(request):
     '''
     This is where a user logs in after signing up to the app
@@ -22,7 +19,7 @@ def profile(request):
     '''
     This is a user's profile page
     '''
-    return render(request, 'profile.html')
+    return render(request, 'home.html')
 
 
 @login_required(login_url='/accounts/login/')
@@ -50,21 +47,14 @@ def profile(request):
 
 
 @login_required(login_url='/accounts/login/')
-def like(request, image_id):
-    post = get_object_or_404(Image, pk=image_id)
-    request.user.profile.like(post)
-
-    return redirect('welcome')
-
-@login_required(login_url='/accounts/login/')
 def search_results(request):
 
-    if 'image' in request.GET and request.GET["image"]:
-        search_term = request.GET.get("image")
-        searched_images = Image.search_by_image_name(search_term)
+    if 'user' in request.GET and request.GET["user"]:
+        search_term = request.GET.get("user")
+        searched_users = User.search_by_user_name(search_term)
 
         message = f"{search_term}"
-        return render(request, 'search.html', {"message": message, "images": searched_images})
+        return render(request, 'search.html', {"message": message, "users": searched_users})
 
     else:
         message = "You haven't made any searches"

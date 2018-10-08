@@ -55,16 +55,6 @@ class Comment(models.Model):
     comment = models.TextField(max_length = 144)
     image = models.ForeignKey(Image, on_delete=models.CASCADE, default= True)
     
-class Tag(models.Model):
-    name = models.CharField(max_length= 50)
-
-    def __str__(self):
-        return self.name
-
-class Like(models.Model):
-    user = models.ForeignKey(Profile)    
-    image = models.ForeignKey(Image, on_delete=models.CASCADE)
-
 class User(models.Model):
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
