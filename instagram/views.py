@@ -15,6 +15,9 @@ def login(request):
     '''
     return render(request, 'registration/login.html')
 
+def registration_form(request):
+    return render(request, 'registration/registration_form.html')    
+
 
 @login_required(login_url='/accounts/login/')
 def home(request):
@@ -25,11 +28,13 @@ def home(request):
     date = dt.date.today()
 
     if request.method == 'POST':
-        form = CommentForm(request.POST)
-        return redirect('home')
         name = form.cleaned_data['your_name']
         email = form.cleaned_data['email']
-        send_welcome_email(name,email)
+        send_welcome_email(name, email)
+
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            print('valid')
 
     else:
         form = CommentForm()
@@ -66,3 +71,15 @@ def search_results(request):
     else:
         message = "You haven't made any searches"
         return render(request, 'search.html', {"message": message})
+
+
+def add_comment(request, post_id):
+    post = get_object_or_404(Image, pk=post_id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.post = post
+            comment.save()
+    return redirect('home')

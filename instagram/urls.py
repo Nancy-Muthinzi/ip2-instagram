@@ -9,6 +9,7 @@ urlpatterns=[
     # url('^$',views.login,name = 'login'),
     url('^profile/(\d+)',views.profile,name = 'profile'),
     url('^$',views.home,name='home'),
+    url('^$',views.registration_form,name='registration_form'),
     url(r'^search/', views.search_results, name='search_results')
 ]
 

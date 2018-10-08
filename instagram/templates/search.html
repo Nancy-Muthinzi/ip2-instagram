@@ -1,11 +1,13 @@
-{% extends base.html %}
+{% extends 'base.html' %}
 {% block content %}
+{% include "navbar.html" %}
 
-<div class="container-fluid">
-    {% if images %}
-    
+<div class="row">
+    {% if user %}
+    <h2>Found {{ user }} of searched term {{message}}</h2>
+    {% else %}
+    <h2> Found 0 user for the search term {{message}}</h2>
     {% endif %}
-
 </div>
 
 {% endblock %}

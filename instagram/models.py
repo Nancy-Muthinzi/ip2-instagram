@@ -58,11 +58,7 @@ class Comment(models.Model):
     image = models.ForeignKey(Image, on_delete=models.CASCADE, default= True)
     
 class User(models.Model):
-    first_name = models.CharField(max_length=25)
-    last_name = models.CharField(max_length=25)
+    name = models.CharField(max_length=25)
     username = models.CharField(max_length=25)
     email = models.EmailField()
-    # password = models.PasswordField()
     
-class Likes(models.Model):
-    last_name = models.CharField(max_length=25)
