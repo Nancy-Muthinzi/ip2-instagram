@@ -14,11 +14,13 @@
 <body>
 
   <nav class="navbar" style="background-color:#5bc0de;">
-    <section class="logo-section">
+    <a href="{% url 'home' %}">
+      <section class="logo-section">
       <img class="logo" src="https://seeklogo.com/images/I/instagram-new-2016-glyph-logo-84CB825424-seeklogo.com.png" />
       <div></div>
       <img class="logoname" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png" />
     </section>
+  </a>
 
     <form class="search-section" role="search" action="#">
       <input class="input-search" type="search" name="search" placeholder="Search..." />
