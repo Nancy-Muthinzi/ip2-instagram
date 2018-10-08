@@ -15,6 +15,7 @@ def login(request):
     '''
     return render(request, 'registration/login.html')
 
+
 def registration_form(request):
     return render(request, 'registration/registration_form.html')    
 
@@ -26,28 +27,30 @@ def home(request):
     '''
     images = Image.objects.all()
     date = dt.date.today()
+    profiles = Profile.objects.all()
 
+    current_user = request.user
     if request.method == 'POST':
-        name = form.cleaned_data['your_name']
-        email = form.cleaned_data['email']
-        send_welcome_email(name, email)
-
         form = CommentForm(request.POST)
         if form.is_valid():
-            print('valid')
+            comment = form.save(commit=False)
+            comment.user = current_user
+            comment.save()
+            return redirect('home')
 
     else:
         form = CommentForm()
 
-    return render(request, 'home.html', {'images': images, 'commentForm': form})
+    return render(request, 'home.html', {'images': images, 'commentForm': form, 'date':date, 'profiles':profiles})
 
 
 @login_required(login_url='/accounts/login/')
 def profile(request, id):
-    profiles = Profile.objects.get(id=id)
+    profiles = Profile.objects.get(user=current_user.id)
     images = Image.objects.all()
+    current_user = request.user
 
-    return render(request, 'profile.html', {'profile': profiles})
+    return render(request, 'profile.html', {'profile': profile, 'date':date})
 
 
 @login_required(login_url='/accounts/login/')
@@ -73,7 +76,7 @@ def search_results(request):
         return render(request, 'search.html', {"message": message})
 
 
-def add_comment(request, post_id):
+def new_comment(request, post_id):
     post = get_object_or_404(Image, pk=post_id)
     if request.method == 'POST':
         form = CommentForm(request.POST)
