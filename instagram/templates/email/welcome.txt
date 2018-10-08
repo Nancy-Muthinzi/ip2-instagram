@@ -1,5 +1,5 @@
 Hello {{ name }}
 
-Welcome to Instagram
+Welcome to Instagram!
 
 Get started with your new account to see friends' photos and videos, share your own and discover things you'll love.

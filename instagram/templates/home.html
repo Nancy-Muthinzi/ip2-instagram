@@ -10,7 +10,7 @@
         <div class="col-md-2"></div>
 
         <div class="col-md-6" style="padding-top:20px;">
-            <div class="card" style="width:465px;">
+            <div class="card" style="width:415px;">
                 {% for post in images %}
 
                 <div class="card-header">
@@ -19,8 +19,34 @@
 
                 <div class="card-body">
                     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal{{post.id}}">
-                        <img src="{{post.image.url}}" width="400px" height="400px" style="border: 1px solid #ddd;">
+                        <img src="{{post.image.url}}" width="350px" height="350px" style="border: 1px solid #ddd;">
                     </button>
+                    {% for post in images %}
+                    <!-- modal content -->
+                    <div class="modal fade" id="myModal{{post.id}}" role="dialog">
+                        <div class="modal-dialog">
+
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <img src="{{post.image.url }}" alt="" width="450" height="450">
+                                    <h4 class="modal-title">{{ post.image_description }}</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    {% for image in post.image_name.all %}
+                                    <p>Name: {{ image.name }}</p>
+                                    <p>Caption: {{ post.image_caption }}</p>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
 
                 <div class="card-title" style="font-size:20px;">
@@ -35,33 +61,6 @@
                 {% endfor %}
             </div>
 
-            {% for post in images %}
-            <!-- modal content -->
-            <div class="modal fade" id="myModal{{post.id}}" role="dialog" style="width:500px;">
-                <div class="modal-dialog">
-
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <img src="{{post.image.url }}" alt="" width="500" height="500">
-                            <h4 class="modal-title">{{ post.image_name }}</h4>
-                        </div>
-
-                        <div class="modal-body">
-                            {% for category in post.image_category.all %}
-                            <p>Category: {{ category.name }}</p>
-                            <p>Location: {{ post.image_location }}</p>
-                            {% endfor %}
-                        </div>
-
-                        <div class="modal-footer">
-                            <input class="form-control" type="text">
-                            <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-2"></div>

@@ -7,8 +7,8 @@ def send_welcome_email(name,receiver):
     sender = 'kathinimuthinzi@gmail.com'
 
     #passing in the context vairables
-    text_content = render_to_string('email/instagram.txt',{"name": name})
-    html_content = render_to_string('email/newsemail.html',{"name": name})
+    text_content = render_to_string('email/welcome.txt',{"name": name})
+    html_content = render_to_string('email/welcome.html',{"name": name})
 
     msg = EmailMultiAlternatives(subject,text_content,sender,[receiver])
     msg.attach_alternative(html_content,'text/html')
