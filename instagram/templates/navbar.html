@@ -20,7 +20,7 @@
       <img class="logoname" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png" />
     </section>
 
-    <form class="search-section" role="search" action="{% url 'search_results' %}">
+    <form class="search-section" role="search" action="#">
       <input class="input-search" type="search" name="search" placeholder="Search..." />
     </form>
 
@@ -29,6 +29,35 @@
       <a class="fa fa-heart-o" href="#"></a>
       <a class="fa fa-user-o" href="{% url 'profile' %}"></a>
     </section>
+
+    <div class="col-sm-6 col-md-6">
+      {% if user.is_authenticated %}
+      <ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account
+                    <span class="caret"></span>
+                </a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="{%url 'home' %}">Home</a>
+            </li>
+            <li>
+              <a href="/accounts/password/change">Change Password</a>
+            </li>
+            <li>
+              <a href="/logout">Logout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      {% else %}
+      <li>
+        <a class='btn btn-default' href="/accounts/login">Login</a>
+      </li>
+
+      {% endif %}
+    </div>
+
   </nav>
 
 </body>

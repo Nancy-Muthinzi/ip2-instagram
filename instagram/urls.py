@@ -5,10 +5,10 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns=[
-    url('^$',views.registration_form,name = 'registration_form'),
-    url('^$',views.login,name = 'login'),
-    url('^$',views.profile,name = 'profile'),
-    url('^home/',views.home,name='home'),
+    
+    # url('^$',views.login,name = 'login'),
+    url('^profile/',views.profile,name = 'profile'),
+    url('^$',views.home,name='home'),
     url(r'^search/', views.search_results, name='search_results')
 ]
 

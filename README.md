@@ -1,6 +1,6 @@
 # INSTAGRAM
 
-<!-- <img src="/gallery/static/images/img.png"> -->
+<!-- <img src="/instagram/static/images/img.png"> -->
 
 This is a clone website for the popular photo app Instagram.
 
@@ -14,12 +14,14 @@ This is a clone website for the popular photo app Instagram.
 
 ## Setup/Installation Requirements
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. Here's a link to the deployed site on Heroku - https://nanciekathini-instagram.herokuapp.com/
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes:
 
 - go to my repo on github and clone it - https://github.com/Nancy-Muthinzi/ip2-instagram.git
 - create a folder on your computer, create and activate a virtual environment
 - download django and install all the necessary requirements to be able to run the app
 - finally do a ./manage.py runserver to be able to run it on your browser
+
+Here's a link to the deployed site on Heroku - https://nanciekathini-instagram.herokuapp.com/
 
 ### Technologies used
 
@@ -44,4 +46,4 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 ### Acknowledgments/Credits
 
 - Hat tip to Moringa School staff, technical mentors and fellow students for their support and guidance
-- StackOverflow, W3Schools and other websites for their useful information
+- StackOverflow, W3Schools, Codepen and other websites for their documentation and useful information

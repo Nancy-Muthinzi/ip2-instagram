@@ -12,11 +12,12 @@
 
         <div class="col-md-3">
             <div style="border-style:ridge; padding-left:50px; padding-right:50px;">
-                <h1 style="font-family: 'Grand Hotel', cursive; text-align: center; font-size: 40px;" > Instagram </h1>
+                <h1 style="font-family: 'Grand Hotel', cursive; text-align: center; font-size: 40px;"> Instagram </h1>
                 <h3 style="text-align: center; font-size: 1.2em; color: grey">Sign up to see photos and <br>videos from
                     your friends.</h3>
                 <div style="text-align:center">
-                <button type="button" class="btn btn-primary"><a href="https://www.facebook.com/" style="color:white;"><i class="fa fa-facebook-official"></i> Log in with Facebook</a></button>
+                    <button type="button" class="btn btn-primary"><a href="https://www.facebook.com/" style="color:white;"><i
+                                class="fa fa-facebook-official"></i> Log in with Facebook</a></button>
                 </div>
                 <p style="color:grey; text-align:center;">---------- OR --------------</p>
 
@@ -27,33 +28,28 @@
                 <form action="/accounts/register/" method="post" style="font-size:12px;">
                     {% csrf_token %}
                     {% bootstrap_form form %}
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
+                    </div>
 
-                    <form  action="/accounts/register/" method="post">
-                        {% csrf_token %}
-                        {% bootstrap_form form %}
-                        <div class="form-group">
-                          <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
-                        </div>
-            
-                        <input type="hidden" name="next" value="{{next}}">
-            
-                      </form>
+                    <input type="hidden" name="next" value="{{next}}">
 
-               
+                </form>
+
                 <p style="text-align: center; color: grey; font-size: 12px;">By signing up, you agree to our <br>Terms,
                     Data Policy and
                     Cookies <br>Policy.</p><br><br>
             </div><br>
             <div style="border-style:ridge"><br>
-                <p style="text-align:center"> Have an account? <a href=#> Log In </a></p>
+                <p style="text-align:center"> Have an account? <a href='/accounts/login'> Log In </a></p>
             </div>
             <div><br>
                 <p style="text-align:center">Get the app.</p>
 
                 <div class="store" style="text-align:center;">
-                    <a href="https://itunes.apple.com/app/instagram/id389801252?mt=8&vt=lo"><img src="../static/images/ios.png"
+                    <a href="https://itunes.apple.com/app/instagram/id389801252?mt=8&vt=lo"><img src="/static/images/ios.png"
                             width="150px" target="_blank"></a> <a href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb%26utm_campaign%3DsignupPage%26ig_mid%3DW6YOogAEAAFWtejCCYLtB7Qih0kq%26utm_content%3Dlo%26utm_medium%3Dbadge"><img
-                            src="..templates/static/images/google.png" width="150px" target="_blank"></a>
+                            src="/static/images/google.png" width="150px" target="_blank"></a>
                     <br><br><br><br>
                 </div>
             </div>

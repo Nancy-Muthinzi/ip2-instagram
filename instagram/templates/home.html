@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load bootstrap3 %}
 {{ block.super}}
 
 {% include "navbar.html" %}
@@ -27,6 +28,7 @@
                 <div class="card-footer">
                     <form class="comment-form" role="comment">
                         {%csrf_token%}
+                        {% bootstrap_form commentForm %}
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Add a comment" name="comment" style="width:380px; border-radius: 10px;">
                         </div>
