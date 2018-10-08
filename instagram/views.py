@@ -7,6 +7,8 @@ from .forms import CommentForm
 from .email import send_welcome_email
 
 # Create your views here.
+
+
 def login(request):
     '''
     This is where a user logs in after signing up to the app
@@ -21,9 +23,13 @@ def home(request):
     '''
     images = Image.objects.all()
     date = dt.date.today()
+
     if request.method == 'POST':
         form = CommentForm(request.POST)
         return redirect('home')
+        name = form.cleaned_data['your_name']
+        email = form.cleaned_data['email']
+        send_welcome_email(name,email)
 
     else:
         form = CommentForm()
@@ -32,11 +38,12 @@ def home(request):
 
 
 @login_required(login_url='/accounts/login/')
-def profile(request,id):
+def profile(request, id):
     profiles = Profile.objects.get(id=id)
     images = Image.objects.all()
 
-    return render(request, 'profile.html',{'profile':profiles})
+    return render(request, 'profile.html', {'profile': profiles})
+
 
 @login_required(login_url='/accounts/login/')
 def user(request):
@@ -44,6 +51,7 @@ def user(request):
     images = Image.objects.all()
 
     return render(request, 'home.html')
+
 
 @login_required(login_url='/accounts/login/')
 def search_results(request):
