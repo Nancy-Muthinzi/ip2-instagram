@@ -3,8 +3,10 @@ from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 
 class Profile(models.Model):
-    profile_photo = models.ImageField(upload_to='home/')
+    profile_photo = models.ImageField(upload_to='profile/')
+    name = models.CharField(max_length= 25, default=True) 
     bio = models.TextField(max_length= 144, default=True) 
+    user=models.OneToOneField(User,on_delete=models.CASCADE)
 
     def save_profile(self):
         self.save()
@@ -13,11 +15,11 @@ class Profile(models.Model):
         self.delete()
 
     def __str__(self):
-        return self.profile_photo     
+        return self.name     
 
 class Image(models.Model):
     image = models.ImageField(upload_to = 'home/', blank=True)
-    user = models.CharField(max_length=25, blank= True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     image_name = models.CharField(max_length = 25, blank=True)
     image_caption = models.TextField(max_length = 144)
     profile = models.TextField(max_length=50, blank=True)
@@ -61,3 +63,5 @@ class User(models.Model):
     username = models.CharField(max_length=25)
     email = models.EmailField()
     # password = models.PasswordField()
+class Likes(models.Model):
+    last_name = models.CharField(max_length=25)

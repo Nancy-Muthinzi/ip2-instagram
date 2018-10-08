@@ -15,14 +15,6 @@ def login(request):
 
 
 @login_required(login_url='/accounts/login/')
-def profile(request):
-    '''
-    This is a user's profile page
-    '''
-    return render(request, 'home.html')
-
-
-@login_required(login_url='/accounts/login/')
 def home(request):
     '''
     This is the current user's profile page
@@ -40,11 +32,18 @@ def home(request):
 
 
 @login_required(login_url='/accounts/login/')
-def profile(request):
-    profiles = Profile.objects.all()
+def profile(request,id):
+    profiles = Profile.objects.get(id=id)
+    images = Image.objects.all()
+
+    return render(request, 'profile.html',{'profile':profiles})
+
+@login_required(login_url='/accounts/login/')
+def user(request):
+    users = User.objects.all()
+    images = Image.objects.all()
 
     return render(request, 'home.html')
-
 
 @login_required(login_url='/accounts/login/')
 def search_results(request):

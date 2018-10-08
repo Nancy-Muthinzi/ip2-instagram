@@ -7,7 +7,7 @@ from . import views
 urlpatterns=[
     
     # url('^$',views.login,name = 'login'),
-    url('^profile/',views.profile,name = 'profile'),
+    url('^profile/(\d+)',views.profile,name = 'profile'),
     url('^$',views.home,name='home'),
     url(r'^search/', views.search_results, name='search_results')
 ]
