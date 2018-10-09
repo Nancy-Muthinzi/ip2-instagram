@@ -10,7 +10,7 @@
         <div class="col-md-2"></div>
 
         <div class="col-md-6" style="padding-top:20px;">
-            <div class="card" style="width:380px;">
+            <div class="card" style="width:420px;">
                 {% for post in images %}
 
                 <div class="card-header">
@@ -18,7 +18,36 @@
                 </div>
 
                 <div class="card-body">
-                    <img src="{{post.image.url}}" width="350px" height="350px" style="border: 5px solid #5bc0de; border-radius: 4px; padding: 5px;">
+                    <button type="button" class="btn btn-light btn-lg" data-toggle="modal" data-target="#myModal{{post.id}}">
+                        <img src="{{post.image.url}}" width="350px" height="350px" style="border: 5px solid #5bc0de; border-radius: 4px; padding: 5px;">
+                    </button>
+
+                    <!-- modal to display image details -->
+                    {% for post in images %}
+                    <!-- modal content -->
+                    <div class="modal fade" id="myModal{{post.id}}" role="dialog" style="width:100%;">
+                        <div class="modal-dialog">
+
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <img src="{{post.image.url }}" alt="" width="420" height="420">
+                                    <h4 class="modal-title">{{ post.image_description }}</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <p>Posted by: {{post.user}}</p>
+                                    <p>Image caption: {{post.image_caption}}</p>
+                                    <p>Comments: {{post.comment}}</p>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
 
                 <div class="card-title" style="font-size:20px;">
@@ -34,6 +63,8 @@
                 </div>
                 <hr>
                 {% endfor %}
+
+
             </div>
 
         </div>
