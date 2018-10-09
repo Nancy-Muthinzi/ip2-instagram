@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 {{ block.super}}
-
 {% include "navbar.html" %}
 
 <div class="container-fluid">
@@ -24,12 +23,24 @@
 
     <!-- my pics -->
     <div class="row">
-        <div class="col-md-3">
-            {% for post in images %}
-            <img src="{{profile.user.image.url}}" width="400px" height="400px" style="border: 1px solid #ddd;"><br>
-            {% endfor %}
-        </div>
+        <div class="col-md-3"  style="padding-top: 20px;">
+            <div class="card" style="width:350px;">
+                {% for post in images %}
 
+                <div class="card-header">
+                    <a href="{{post.user}}" style="font-size:20px;"> {{post.user}} </a>
+                </div>
+
+                <div class="card-body">
+                    <img src="{{post.image.url}}" width="200px" height="200px" style="border: 5px solid #5bc0de; border-radius: 4px; padding: 5px;"><br>
+                </div>
+                <div class="card-title" style="font-size:20px;">
+                    <p style="width:350px; padding-left: 15px;">{{post.image_name}}</p><hr>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
     </div>
 </div>
 </div>

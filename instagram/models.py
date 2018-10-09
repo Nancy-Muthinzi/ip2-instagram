@@ -30,7 +30,7 @@ class Profile(models.Model):
 
 
 class Image(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,related_name='images' ,on_delete=models.CASCADE)
     image = models.ImageField(upload_to='home/', blank=True)
     image_name = models.CharField(max_length=25, blank=True)
     image_caption = models.TextField(max_length=144)
@@ -85,3 +85,4 @@ class User(models.Model):
     name = models.CharField(max_length=25)
     username = models.CharField(max_length=25)
     email = models.EmailField()
+    
