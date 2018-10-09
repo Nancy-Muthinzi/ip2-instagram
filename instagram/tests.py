@@ -21,6 +21,30 @@ class ProfileTestClass(TestCase):
         self.nancy.delete_profile()
         self.assertTrue(len(profiles) == 0)     
 
+class CommentTestClass(TestCase):
+
+    def test_save_method(self):
+        self.comment.save_comment()
+        comment = Comment.objects.all()
+        self.assertTrue(len(comments) > 0)  
+
+    def delete_comment_method(self):
+        self.comment.save_comment()
+        self.comment.delete_comment()
+        self.assertTrue(len(comments) == 0)     
+     
+
+class UserTestClass(TestCase):
+    def test_save_method(self):
+        self.user.save_user()
+        user = User.objects.all()
+        self.assertTrue(len(user) > 0)  
+
+    def delete_user_method(self):
+        self.user.save_comment()
+        self.user.delete_users()
+        self.assertTrue(len(users) == 0)     
+
 
 class ImageTestClass(TestCase):
 
@@ -58,6 +82,9 @@ class ImageTestClass(TestCase):
         self.beach.save_image()
         self.beach.delete_image()
         images = Image.objects.all()   
-        self.assertTrue(len(images) == 0) 
+        self.assertTrue(len(images) == 0)
+
+
+
 
     
