@@ -17,7 +17,7 @@ def login(request):
 
 
 def registration_form(request):
-    return render(request, 'registration/registration_form.html')    
+    return render(request, 'registration/registration_form.html')
 
 
 @login_required(login_url='/accounts/login/')
@@ -41,16 +41,16 @@ def home(request):
     else:
         form = CommentForm()
 
-    return render(request, 'home.html', {'images': images, 'commentForm': form, 'date':date, 'profiles':profiles})
+    return render(request, 'home.html', {'images': images, 'commentForm': form, 'date': date, 'profiles': profiles})
 
 
 @login_required(login_url='/accounts/login/')
 def profile(request, id):
-    profiles = Profile.objects.get(user=current_user.id)
-    images = Image.objects.all()
     current_user = request.user
+    profiles = Profile.objects.get(user=current_user)
+    images = Image.objects.all()
 
-    return render(request, 'profile.html', {'profile': profile, 'date':date})
+    return render(request, 'profile.html', {'profile': profile})
 
 
 @login_required(login_url='/accounts/login/')
