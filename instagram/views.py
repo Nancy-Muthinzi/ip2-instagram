@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 import datetime as dt
-from .models import Image, Profile
+from .models import Image, Profile, Comment, User
 from django.contrib.auth.decorators import login_required
 from .forms import CommentForm
 from .email import send_welcome_email
@@ -28,6 +28,8 @@ def home(request):
     images = Image.objects.all()
     date = dt.date.today()
     profiles = Profile.objects.all()
+    comments = Comment.objects.all()
+    users = User.objects.all()
 
     current_user = request.user
     if request.method == 'POST':
@@ -41,7 +43,7 @@ def home(request):
     else:
         form = CommentForm()
 
-    return render(request, 'home.html', {'images': images, 'commentForm': form, 'date': date, 'profiles': profiles})
+    return render(request, 'home.html', {'images': images, 'commentForm': form, 'date': date, 'profiles': profiles, 'comments': comments, 'users':user})
 
 
 @login_required(login_url='/accounts/login/')
@@ -50,7 +52,7 @@ def profile(request, id):
     profiles = Profile.objects.get(user=current_user)
     images = Image.objects.filter(user=current_user)
 
-    return render(request, 'profile.html', {'profile': profiles,"images":images})
+    return render(request, 'profile.html', {'profile': profiles, "images": images})
 
 
 @login_required(login_url='/accounts/login/')
