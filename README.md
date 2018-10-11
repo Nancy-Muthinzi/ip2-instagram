@@ -1,6 +1,6 @@
 # INSTAGRAM
 
-<!-- <img src="/instagram/static/images/img.png"> -->
+<img src="/instagram/static/images/inst.png">
 
 This is a clone website for the popular photo app Instagram.
 
