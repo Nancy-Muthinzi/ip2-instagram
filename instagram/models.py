@@ -1,4 +1,5 @@
 from django.db import models
+import datetime as dt
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 
@@ -16,8 +17,8 @@ class Profile(models.Model):
         self.delete()
 
     @classmethod
-    def get_profiles(cls):
-        profile = cls.objects.all()
+    def search_profile(cls, name):
+        profile = Profile.objects.filter(user__username__icontains = name)
         return profile
 
     @classmethod
@@ -35,8 +36,16 @@ class Image(models.Model):
     image_name = models.CharField(max_length=25, blank=True)
     image_caption = models.TextField(max_length=144)
 
-    def __str__(self):
-        return self.image_caption
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
+
+    @classmethod
+    def get_all_images(cls):
+        images = cls.objects.all()
+        return images    
 
     class Meta:
         ordering = ['image_caption']
@@ -67,10 +76,12 @@ class Image(models.Model):
         images = cls.objects.get(pk=id)
         return images
 
+    def __str__(self):
+        return self.image_name
 
 class Comment(models.Model):
     user = models.ForeignKey(User, default=True, on_delete=models.CASCADE)
-    comment = models.TextField(max_length=144)
+    comment = models.CharField(max_length=144)
     image = models.ForeignKey(Image, on_delete=models.CASCADE, default=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -80,6 +91,8 @@ class Comment(models.Model):
     def delete_comment(self):
         self.delete()
 
+def __str__(self):
+        return self.comment
 
 class User(models.Model):
     name = models.CharField(max_length=25)

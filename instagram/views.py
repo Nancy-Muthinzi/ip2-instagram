@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 import datetime as dt
 from .models import Image, Profile, Comment, User
@@ -30,6 +30,7 @@ def home(request):
     profiles = Profile.objects.all()
     comments = Comment.objects.all()
     users = User.objects.all()
+    profile_photo = User.objects.all()
 
     current_user = request.user
     if request.method == 'POST':
@@ -43,7 +44,7 @@ def home(request):
     else:
         form = CommentForm()
 
-    return render(request, 'home.html', {'images': images, 'commentForm': form, 'date': date, 'profiles': profiles, 'comments': comments, 'users':user})
+    return render(request, 'home.html', {'images': images, 'commentForm': form, 'date': date, 'profiles': profiles, 'comments': comments, 'users': user})
 
 
 @login_required(login_url='/accounts/login/')
@@ -51,6 +52,7 @@ def profile(request, id):
     current_user = request.user
     profiles = Profile.objects.get(user=current_user)
     images = Image.objects.filter(user=current_user)
+    comments = Comment.objects.all()
 
     return render(request, 'profile.html', {'profile': profiles, "images": images})
 
@@ -78,13 +80,15 @@ def search_results(request):
         return render(request, 'search.html', {"message": message})
 
 
-def new_comment(request, post_id):
+def comment(request, post_id):
     post = get_object_or_404(Image, pk=post_id)
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.user = request.user
-            comment.post = post
+            comment.image = post
             comment.save()
     return redirect('home')
+
+    return render(request, 'home.html')
