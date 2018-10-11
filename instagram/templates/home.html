@@ -14,7 +14,7 @@
                 {% for post in images %}
 
                 <div class="card-header">
-                    <a href="{{post.user}}" style="font-size:20px;"> {{post.user}} </a>
+                    <a href="{% url  'profile' post.user.id %}" style="font-size:20px;"> {{post.user}} </a>
                 </div>
 
                 <div class="card-body">
@@ -61,7 +61,7 @@
                 </div>
                 <hr>
 
-                <form action="{% url 'comment' post.id %}" method="post">
+                <form action="{% url 'comment' post.user.id %}" method="post">
                     {%csrf_token%}
                     {% bootstrap_form commentForm layout='inline' %}
                     <input type="submit" value="Comment">
